@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <radialGradient id="highlight" cx="35%" cy="25%" r="60%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+        </radialGradient>
+    </defs>
+
+    <!-- Oberer roter Bereich -->
+    <path d="M256 32
+             A224 224 0 0 1 480 256
+             H32
+             A224 224 0 0 1 256 32Z" fill="#e53935"></path>
+
+    <!-- Unterer weißer Bereich -->
+    <path d="M32 256
+             H480
+             A224 224 0 0 1 32 256Z" fill="#ffffff"></path>
+
+    <!-- Glanz -->
+    <ellipse cx="180" cy="140" rx="100" ry="60" fill="url(#highlight)" transform="rotate(-20 180 140)"></ellipse>
+
+    <!-- Mittelband -->
+    <rect x="32" y="236" width="448" height="40" fill="#111"></rect>
+
+    <!-- Außenring -->
+    <circle cx="256" cy="256" r="224" fill="none" stroke="#111" stroke-width="20"></circle>
+
+    <!-- Knopf außen -->
+    <circle cx="256" cy="256" r="58" fill="#ffffff" stroke="#111" stroke-width="20"></circle>
+
+    <!-- Knopf innen -->
+    <circle cx="256" cy="256" r="24" fill="#d9d9d9" stroke="#111" stroke-width="8"></circle>
+</svg>
