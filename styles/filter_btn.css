@@ -1,0 +1,132 @@
+.type_filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.type_filter button {
+    border: none;
+    border-radius: 30px;
+    padding: 4px 12px;
+    color: rgb(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.type_filter button:hover {
+    opacity: 1;
+}
+
+.all {
+    background: #2d3350;
+    color: #ffffff;
+}
+
+.fire {
+    background: rgba(238,129,48,.7);
+    color: #ee8130;
+}
+
+.water {
+    background: rgba(99,144,240,.7);
+    color: #6390f0;
+}
+
+.grass {
+    background: rgba(122,199,76,.7);
+    color: #7ac74c;
+}
+
+.electric {
+    background: rgba(247,208,44,.7);
+    color: #d4b62b;
+}
+
+.ice {
+    background: rgba(150,217,214,.7);
+    color: #96d9d6;
+}
+
+.fighting {
+    background: rgba(194,46,40,.7);
+    color: #d87974;
+}
+
+.poison {
+    background: rgba(163,62,161,.7);
+    color: #ba68c8;
+}
+
+.ground {
+    background: rgba(226,191,101,.7);
+    color: #c9b26f;
+}
+
+.flying {
+    background: rgba(169,143,243,.7);
+    color: #a98ff3;
+}
+
+.psychic {
+    background: rgba(249,85,135,.7);
+    color: #f06292;
+}
+
+.bug {
+    background: rgba(166,185,26,.7);
+    color: #aed581;
+}
+
+.rock {
+    background: rgba(182,161,54,.7);
+    color: #c8b67c;
+}
+
+.ghost {
+    background: rgba(115,87,151,.7);
+    color: #9575cd;
+}
+
+.dragon {
+    background: rgba(111,53,252,.7);
+    color: #8b7bff;
+}
+
+.dark {
+    background: rgba(60, 46, 37, 0.7);
+    color: #9aa4c0;
+}
+
+.steel {
+    background: rgba(183,183,206,.7);
+    color: #b7b7ce;
+}
+
+.fairy {
+    background: rgba(214,133,173,.7);
+    color: #d685ad;
+}
+
+.normal {
+    background: rgba(168,167,122,.7);
+    color: #bdbdbd;
+}
+
+.filter_btn {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.filter_btn.active {
+    opacity: 1;
+}
+
+.filter_btn:not(.active) {
+    opacity: 0.7;
+}
+
+.filter_btn:hover {
+    opacity: 1.5;
+}
