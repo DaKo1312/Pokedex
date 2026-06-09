@@ -1,17 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/icons/pokeball_favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./styles/standard.css">
-    <script src="script.js" defer></script>
-    <title>Pokedex</title>
-</head>
-<body>
-
-    
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon"href="./assets/icons/pokeball_favicon.svg"type="image/x-icon"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="./styles/cards.css">
+        <link rel="stylesheet" href="./styles/filter_btn.css">
+        <link rel="stylesheet" href="./styles/standard.css"/>
+        <script src="./scripts/template.js"></script>
+        <script src="script.js" defer></script>
+        <title>Pokedex</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="logo_container">
+                    <img src="./assets/icons/pokeball_header.svg" alt="Pokeball" />
+                    <h1>Pokedex</h1>
+                </div>
+                <section class="search_section">
+                    <input
+                    data-id="search_input"
+                    type="text"
+                    placeholder="Pokemon suchen ..."
+                    />
+                </section>
+                <div class="type_filter">
+                    <button class="filter_btn all" data-id="all">Alle</button>
+                    <button class="filter_btn fire" data-id="fire">Fire</button>
+                    <button class="filter_btn water" data-id="water">Water</button>
+                    <button class="filter_btn grass" data-id="grass">Grass</button>
+                    <button class="filter_btn electric" data-id="electric">Electric</button>
+                    <button class="filter_btn ice" data-id="ice">Ice</button>
+                    <button class="filter_btn fighting" data-id="fighting">Fighting</button>
+                    <button class="filter_btn poison" data-id="poison">Poison</button>
+                    <button class="filter_btn ground" data-id="ground">Ground</button>
+                    <button class="filter_btn flying" data-id="flying">Flying</button>
+                    <button class="filter_btn psychic" data-id="psychic">Psychic</button>
+                    <button class="filter_btn bug" data-id="bug">Bug</button>
+                    <button class="filter_btn rock" data-id="rock">Rock</button>
+                    <button class="filter_btn ghost" data-id="ghost">Ghost</button>
+                    <button class="filter_btn dragon" data-id="dragon">Dragon</button>
+                    <button class="filter_btn dark" data-id="dark">Dark</button>
+                    <button class="filter_btn steel" data-id="steel">Steel</button>
+                    <button class="filter_btn fairy" data-id="fairy">Fairy</button>
+                    <button class="filter_btn normal" data-id="normal">Normal</button>
+                </div>
+            </div>
+        </header>
+        <main data-id="content">
+            <div class="container">
+                <section id="pokemon_container"></section>
+            </div>
+        </main>
+        </div>
+    </body>
 </html>
