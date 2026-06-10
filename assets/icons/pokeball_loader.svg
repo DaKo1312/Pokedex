@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+
+    <defs>
+        <radialGradient id="highlight" cx="35%" cy="25%" r="60%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"></stop>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+        </radialGradient>
+    </defs>
+
+    <style>
+        .pulse_button {
+            transform-origin: center;
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+
+        .pulse_ring {
+            transform-origin: center;
+            animation: ring 1.6s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes ring {
+            0% {
+                opacity: 0;
+                transform: scale(1);
+            }
+
+            15% {
+                opacity: .8;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(2.5);
+            }
+        }
+    </style>
+
+    <!-- Oberer roter Bereich -->
+    <path d="M64 8
+             A56 56 0 0 1 120 64
+             H8
+             A56 56 0 0 1 64 8Z" fill="#e53935"></path>
+
+    <!-- Unterer weißer Bereich -->
+    <path d="M8 64
+             H120
+             A56 56 0 0 1 8 64Z" fill="#ffffff"></path>
+
+    <!-- Glanz -->
+    <ellipse cx="45" cy="35" rx="24" ry="14" fill="url(#highlight)" transform="rotate(-20 45 35)"></ellipse>
+
+    <!-- Mittelband -->
+    <rect x="8" y="59" width="112" height="10" fill="#111"></rect>
+
+    <!-- Außenring -->
+    <circle cx="64" cy="64" r="56" fill="none" stroke="#111" stroke-width="5"></circle>
+
+    <!-- Animierter Ring -->
+    <circle class="pulse_ring" cx="64" cy="64" r="14" fill="none" stroke="#ffffff" stroke-width="3"></circle>
+
+    <!-- Pulsierender Knopf -->
+    <g class="pulse_button">
+
+        <circle cx="64" cy="64" r="14" fill="#ffffff" stroke="#111" stroke-width="5"></circle>
+
+        <circle cx="64" cy="64" r="6" fill="#d9d9d9" stroke="#111" stroke-width="2"></circle>
+
+    </g>
+
+</svg>

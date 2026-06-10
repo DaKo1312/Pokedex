@@ -1,0 +1,326 @@
+#pokemon_dialog {
+    width: 520px;
+    max-width: 90vw;
+    min-height: 400px;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 24px;
+    background-color: #18183a;
+    color: white;
+}
+
+#pokemon_dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+}
+
+.dialog_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 280px;
+    gap: 16px;
+    padding: 32px;
+    border-radius: 24px 24px 0 0;
+}
+
+.dialog_header span {
+    font-size: 20px;
+    color: rgba(255,255,255,.5);
+}
+
+.dialog_header img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+}
+
+.dialog_header h2 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.pokemon_types {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.pokemon_id {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+}
+
+.dialog_header img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.dialog_header h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.pokemon_types {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dialog_header.grass {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(120, 200, 80, .35) 0%,
+            rgba(120, 200, 80, .05) 100%
+        );
+}
+
+.dialog_header.fire {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(240, 128, 48, .35) 0%,
+            rgba(240, 128, 48, .05) 100%
+        );
+}
+
+.dialog_header.water {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(104, 144, 240, .35) 0%,
+            rgba(104, 144, 240, .05) 100%
+        );
+}
+
+.dialog_header.electric {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(248, 208, 48, .35) 0%,
+            rgba(248, 208, 48, .05) 100%
+        );
+}
+
+.dialog_header.poison {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(160, 64, 160, .35) 0%,
+            rgba(160, 64, 160, .05) 100%
+        );
+}
+
+.dialog_header.bug {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(168, 184, 32, .35) 0%,
+            rgba(168, 184, 32, .05) 100%
+        );
+}
+
+.dialog_header.normal {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(168, 168, 120, .35) 0%,
+            rgba(168, 168, 120, .05) 100%
+        );
+}
+
+.dialog_header.ground {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(224, 192, 104, .35) 0%,
+            rgba(224, 192, 104, .05) 100%
+        );
+}
+
+.dialog_header.flying {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(168, 144, 240, .35) 0%,
+            rgba(168, 144, 240, .05) 100%
+        );
+}
+
+.dialog_header.fairy {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(238, 153, 172, .35) 0%,
+            rgba(238, 153, 172, .05) 100%
+        );
+}
+
+.dialog_content {
+    padding: 24px 32px 32px;
+}
+
+.pokemon_description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.dialog_section_title {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.pokemon_infos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pokemon_stats {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.info_card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color:
+        rgba(255,255,255,.05);
+}
+
+.info_card span {
+    font-size: 14px;
+    text-transform: uppercase;
+    opacity: .6;
+}
+
+.info_card strong {
+    font-size: 18px;
+}
+
+.stat_row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.stat_name {
+    width: 120px;
+}
+
+.stat_value {
+    width: 40px;
+    font-weight: 700;
+}
+
+.stat_bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 30px;
+    background-color:
+        rgba(255,255,255,.1);
+}
+
+.stat_fill {
+    height: 100%;
+    border-radius: 30px;
+    background-color: #ffd700;
+}
+
+.dialog_navigation {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog_nav_btn {
+    position: absolute;
+    justify-content: space-between;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: rgba(255,255,255,.1);
+    color: white;
+}
+
+.dialog_control_btn {
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: rgba(255,255,255,.1);
+    color: white;
+}
+
+.dialog_close_btn {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+}
+
+.dialog_nav_prev,
+.dialog_nav_next {
+    top: 150px;
+}
+
+.dialog_nav_prev {
+    left: 24px;
+}
+
+.dialog_nav_next {
+    right: 24px;
+}
+
+.evolution_chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 80px;
+    margin-top: 16px;
+}
+
+.evolution_pokemon {
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color:
+        rgba(255,255,255,.05);
+}
+
+.evolution_arrow {
+    opacity: .5;
+    font-size: 24px;
+}
+
+.evolution_pokemon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
