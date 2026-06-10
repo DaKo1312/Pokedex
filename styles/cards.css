@@ -83,3 +83,75 @@
     font-weight: 700;
     color: white;
 }
+
+.pokemon_card.border-grass {
+    border-color: #7ac74c;
+}
+
+.pokemon_card.border-fire {
+    border-color: #ee8130;
+}
+
+.pokemon_card.border-water {
+    border-color: #6390f0;
+}
+
+.pokemon_card.border-electric {
+    border-color: #f7d02c;
+}
+
+.pokemon_card.border-ice {
+    border-color: #96d9d6;
+}
+
+.pokemon_card.border-fighting {
+    border-color: #c22e28;
+}
+
+.pokemon_card.border-poison {
+    border-color: #a33ea1;
+}
+
+.pokemon_card.border-ground {
+    border-color: #e2bf65;
+}
+
+.pokemon_card.border-flying {
+    border-color: #a98ff3;
+}
+
+.pokemon_card.border-psychic {
+    border-color: #f95587;
+}
+
+.pokemon_card.border-bug {
+    border-color: #a6b91a;
+}
+
+.pokemon_card.border-rock {
+    border-color: #b6a136;
+}
+
+.pokemon_card.border-ghost {
+    border-color: #735797;
+}
+
+.pokemon_card.border-dragon {
+    border-color: #6f35fc;
+}
+
+.pokemon_card.border-dark {
+    border-color: #705746;
+}
+
+.pokemon_card.border-steel {
+    border-color: #b7b7ce;
+}
+
+.pokemon_card.border-fairy {
+    border-color: #d685ad;
+}
+
+.pokemon_card.border-normal {
+    border-color: #a8a77a;
+}

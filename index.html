@@ -1,13 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon"href="./assets/icons/pokeball_favicon.svg"type="image/x-icon"/>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="./styles/overlay.css">
         <link rel="stylesheet" href="./styles/cards.css">
         <link rel="stylesheet" href="./styles/filter_btn.css">
         <link rel="stylesheet" href="./styles/standard.css"/>
+        <script src="./scripts/api.js"></script>
+        <script src="./scripts/overlay.js"></script>
+        <script src="./scripts/filter.js"></script>
         <script src="./scripts/template.js"></script>
         <script src="script.js" defer></script>
         <title>Pokedex</title>
@@ -51,9 +55,32 @@
         </header>
         <main data-id="content">
             <div class="container">
+                <div class="pokemon_counter">
+                    <span id="pokemon_counter_text">
+                        40 von 151 Pokemon
+                    </span>
+                </div>
                 <section id="pokemon_container"></section>
             </div>
+            <div class="load_more_container">
+            <button
+                class="load_more_btn"
+                data-id="load-more-button"
+                >
+                Mehr Pokemon laden
+                </button>
+            </div>
         </main>
-        </div>
+        <dialog id="pokemon_dialog">
+            <button class="dialog_close_btn"onclick="closePokemonDialog()">
+                ✕
+            </button>
+        </dialog>
     </body>
+    <div id="loading_screen">
+    <img
+        src="./assets/icons/pokeball_loader.svg"
+        alt="Loading"
+        class="loading_pokeball">
+    </div>
 </html>
