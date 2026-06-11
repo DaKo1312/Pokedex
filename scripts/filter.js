@@ -1,10 +1,14 @@
 function renderFilteredPokemon(filtered_pokemon) {
     clearPokemonContainer();
-    filtered_pokemon.forEach(
-        (pokemon) => {
-            renderPokemon(pokemon);
-        }
-    );
+    if (filtered_pokemon.length === 0) {
+        document.getElementById("pokemon_container").innerHTML =
+            getNoPokemonFoundTemplate();
+        updateResultCounter(0);
+        return;
+    }
+    filtered_pokemon.forEach((pokemon) => {
+        renderPokemon(pokemon);
+    });
     updateResultCounter(
         filtered_pokemon.length
     );

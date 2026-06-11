@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="./styles/cards.css">
         <link rel="stylesheet" href="./styles/filter_btn.css">
         <link rel="stylesheet" href="./styles/standard.css"/>
+        <script src="script.js"></script>
         <script src="./scripts/api.js"></script>
         <script src="./scripts/overlay.js"></script>
         <script src="./scripts/filter.js"></script>
         <script src="./scripts/template.js"></script>
-        <script src="script.js" defer></script>
         <title>Pokedex</title>
     </head>
     <body>
@@ -27,11 +27,11 @@
                     <input
                     data-id="search_input"
                     type="text"
-                    placeholder="Pokemon suchen ..."
+                    placeholder="Search Pokemon ..."
                     />
                 </section>
                 <div class="type_filter">
-                    <button class="filter_btn all" data-id="all">Alle</button>
+                    <button class="filter_btn all" data-id="all">All</button>
                     <button class="filter_btn fire" data-id="fire">Fire</button>
                     <button class="filter_btn water" data-id="water">Water</button>
                     <button class="filter_btn grass" data-id="grass">Grass</button>
@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="pokemon_counter">
                     <span id="pokemon_counter_text">
-                        40 von 151 Pokemon
+                        40 from 151 Pokemon
                     </span>
                 </div>
                 <section id="pokemon_container"></section>
@@ -67,15 +67,18 @@
                 class="load_more_btn"
                 data-id="load-more-button"
                 >
-                Mehr Pokemon laden
+                LOAD MORE
                 </button>
             </div>
         </main>
-        <dialog id="pokemon_dialog">
+        <dialog id="pokemon_dialog" data-id="dialog">
             <button class="dialog_close_btn"onclick="closePokemonDialog()">
                 ✕
             </button>
         </dialog>
+        <footer>
+            <span>&copy; Pokedex - Daniel Korbmacher</span>
+        </footer>
     </body>
     <div id="loading_screen">
     <img

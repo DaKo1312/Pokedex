@@ -5,7 +5,6 @@ async function init() {
 }
 init();
 
-// #region loadPokemon
 async function loadPokemon(id) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const pokemon = await response.json();
@@ -36,7 +35,6 @@ async function loadMorePokemon() {
         ).style.display = "none";
     }
 }
-// #endregion
 
 async function loadAllPokemon() {
     for (let i = 1; i <= 151; i++) {
@@ -63,8 +61,9 @@ async function openPokemonDialog(id) {
         );
     const species = await loadPokemonSpecies(id);
     const evolution = await loadEvolutionChain(species.evolution_chain.url);
+    const evolutionPokemon = getEvolutionPokemon(evolution);
     const description = getGermanFlavorText(species);
-    renderPokemonDialog(pokemon, description, evolution);
+    renderPokemonDialog(pokemon, description, evolutionPokemon);
     document.getElementById("pokemon_dialog")
         .showModal();
 }

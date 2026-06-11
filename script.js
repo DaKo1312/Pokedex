@@ -85,7 +85,7 @@ function updatePokemonCounter() {
     document.getElementById(
         "pokemon_counter_text"
     ).textContent =
-        `${current_pokemon} von 151 Pokemon`;
+        `${current_pokemon} from 151 Pokemon`;
 }
 
 function hasPokemonType(pokemon, type) {
@@ -97,7 +97,7 @@ function hasPokemonType(pokemon, type) {
 
 function updateResultCounter(count) {
     document.getElementById("pokemon_counter_text")
-    .textContent = `${count} Treffer`;
+    .textContent = `${count} hits`;
 }
 
 function renderCurrentPokemon() {
@@ -116,4 +116,34 @@ function getPokemonListForSearch() {
     return getFilteredPokemonByType(
         active_type_filter
     );
+}
+
+function getEvolutionPokemon(evolution) {
+    const evolutionPokemon = [];
+    const firstPokemon = all_pokemon.find(
+    pokemon => pokemon.name === evolution.chain.species.name);
+    if (firstPokemon) {
+        evolutionPokemon.push(firstPokemon);
+    }
+    const secondPokemon = all_pokemon.find(
+        pokemon => pokemon.name === evolution.chain.evolves_to[0]?.species?.name
+    );
+    if (secondPokemon) {
+        evolutionPokemon.push(secondPokemon);
+    }
+    const thirdPokemon = all_pokemon.find(
+        pokemon => pokemon.name === evolution.chain.evolves_to[0]
+                ?.evolves_to[0]
+                ?.species?.name
+    );
+    if (thirdPokemon) {
+        evolutionPokemon.push(thirdPokemon);
+    }
+    console.log(evolutionPokemon);
+
+    return evolutionPokemon;
+}
+
+function getPokemonStats(pokemon) {
+    return pokemon.stats;
 }

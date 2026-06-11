@@ -170,6 +170,7 @@
     margin: 0;
     font-size: 16px;
     line-height: 1.2;
+    min-height: 60px;
 }
 
 .dialog_section_title {
@@ -308,10 +309,15 @@
 }
 
 .evolution_pokemon {
-    padding: 8px 12px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
     border-radius: 12px;
-    background-color:
-        rgba(255,255,255,.05);
+    background-color: rgba(255,255,255,.05);
 }
 
 .evolution_arrow {
@@ -320,7 +326,21 @@
 }
 
 .evolution_pokemon img {
-    width: 64px;
-    height: 64px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.evolution_sprite {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.evolution_sprite img {
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }

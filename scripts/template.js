@@ -14,102 +14,52 @@ function getPokemonCardTemplate(pokemon) {
                 ${pokemon.name}
             </h2>
             <div class="pokemon_types">
-            <div class="pokemon_types">
                 ${getPokemonTypesTemplate(pokemon)}
-            </div>
             </div>
         </button>
     `;
 }
 
-function getPokemonDialogTemplate(pokemon, description, evolution) {
-    const evolutionPokemon = [];
-    const firstPokemon = all_pokemon.find(
-    pokemon => pokemon.name === evolution.chain.species.name
-    );
-    if (firstPokemon) {
-        evolutionPokemon.push(firstPokemon);
-    }
-    const secondPokemon = all_pokemon.find(
-        pokemon =>
-            pokemon.name ===
-            evolution.chain.evolves_to[0]?.species?.name
-    );
-    if (secondPokemon) {
-        evolutionPokemon.push(secondPokemon);
-    }
-    const thirdPokemon = all_pokemon.find(
-        pokemon =>
-            pokemon.name ===
-            evolution.chain.evolves_to[0]
-                ?.evolves_to[0]
-                ?.species?.name
-    );
-    if (thirdPokemon) {
-        evolutionPokemon.push(thirdPokemon);
-    }
+function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
     return `
-        <button
-            class="dialog_control_btn dialog_nav_prev"
-            onclick="showPokemonInDialog(${pokemon.id - 1})"
-        >
+        <button class="dialog_control_btn dialog_nav_prev" data-id="prev_button" onclick="showPokemonInDialog(${pokemon.id - 1})">
             ←
         </button>
-        <button
-            class="dialog_control_btn dialog_nav_next"
-            onclick="showPokemonInDialog(${pokemon.id + 1})"
-        >
+        <button class="dialog_control_btn dialog_nav_next" data-id="next_button" onclick="showPokemonInDialog(${pokemon.id + 1})">
             →
         </button>
-        <button
-            class="dialog_control_btn dialog_close_btn"
-            onclick="closePokemonDialog()"
-        >
-            ✕
+        <button class="dialog_control_btn dialog_close_btn" data-id="close_dialog_button" onclick="document.getElementById('pokemon_dialog').close()">
+            X
         </button>
-        <div
-            class="dialog_header ${pokemon.types[0].type.name}"
-        >
+        <div class="dialog_header ${pokemon.types[0].type.name}" data-id="overlay-pokemon-name">
             <span class="pokemon_id">
                 – ${pokemon.id} –
             </span>
-            <img
-                class="pokemon_image"
+            <img class="pokemon_image" data-id="dialog-image"
                 src="${pokemon.sprites.other["official-artwork"].front_default}"
-                alt="${pokemon.name}"
-            >
-            <h2>
-                ${capitalizeFirstLetter(pokemon.name)}
-            </h2>
+                alt="${pokemon.name}">
+            <h2>${capitalizeFirstLetter(pokemon.name)}</h2>
             <div class="pokemon_types">
                 ${getPokemonTypesTemplate(pokemon)}
             </div>
         </div>
         <div class="dialog_content">
-            <p class="pokemon_description">
-                ${description}
-            </p>
+            <p class="pokemon_description">${description}</p>
             <h3 class="dialog_section_title">
                 Infos
             </h3>
             <div class="pokemon_infos">
                 <div class="info_card">
                     <span>Höhe</span>
-                    <strong>
-                        ${pokemon.height / 10} m
-                    </strong>
+                    <strong>${pokemon.height / 10} m</strong>
                 </div>
                 <div class="info_card">
                     <span>Gewicht</span>
-                    <strong>
-                        ${pokemon.weight / 10} kg
-                    </strong>
+                    <strong>${pokemon.weight / 10} kg</strong>
                 </div>
                 <div class="info_card">
                     <span>Basis XP</span>
-                    <strong>
-                        ${pokemon.base_experience}
-                    </strong>
+                    <strong>${pokemon.base_experience}</strong>
                 </div>
                 <div class="info_card">
                     <span>Fähigkeiten</span>
@@ -132,7 +82,7 @@ function getPokemonDialogTemplate(pokemon, description, evolution) {
                 Entwicklung
             </h3>
             <div class="evolution_chain">
-                ${getEvolutionTemplate(firstPokemon, secondPokemon, thirdPokemon,)}
+                ${getEvolutionTemplate(evolutionPokemon)}
             </div>
         </div>
     `;
@@ -178,28 +128,36 @@ function getPokemonStatsTemplate(pokemon) {
         .join("");
 }
 
-function getEvolutionTemplate(firstPokemon, secondPokemon, thirdPokemon,) {
+function getEvolutionTemplate(evolutionPokemon) {
+    return evolutionPokemon.map((pokemon, index) => `
+            <div
+                class="evolution_pokemon"
+                onclick="openPokemonDialog(${pokemon.id})">
+                <div class="evolution_sprite">
+                    <img src="${pokemon.sprites.other['official-artwork'].front_default}">
+                </div>
+                <span>
+                    ${capitalizeFirstLetter(pokemon.name)}
+                </span>
+            </div>
+            ${
+                index < evolutionPokemon.length - 1
+                    ? "<span>→</span>"
+                    : ""
+            }
+        `)
+        .join("");
+}
+
+function getNoPokemonFoundTemplate() {
     return `
-        <div class="evolution_pokemon" onclick="openPokemonDialog(${firstEvolutionPokemon.id})">
-            <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${firstEvolutionPokemon.id}.png">
-            <span>${capitalizeFirstLetter(firstPokemon)}</span>
-        </div>
-        <span>
-            →
-        </span>
-        <div class="evolution_pokemon" onclick="openPokemonDialog(${secondEvolutionPokemon.id})">
-            <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png">
-            <span>${capitalizeFirstLetter(secondPokemon)}</span>
-        </div>
-        <span>
-            →
-        </span>
-        <div class="evolution_pokemon" onclick="openPokemonDialog(${thirdEvolutionPokemon.id})">
-            <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">
-            <span>${capitalizeFirstLetter(thirdPokemon)}</span>
+        <div class="not_found_wrapper">
+            <p class="not_found" data-id="not-found">
+            No Pokemon found
+            </p>
+            <p class="not_found_subtitle">
+            Try another search term.
+            </p>
         </div>
     `;
 }

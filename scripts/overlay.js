@@ -23,9 +23,9 @@ function initDialogListener() {
     );
 }
 
-function renderPokemonDialog(pokemon, description, evolution) {
+function renderPokemonDialog(pokemon, description, evolutionPokemon) {
     document.getElementById("pokemon_dialog")
-    .innerHTML = getPokemonDialogTemplate(pokemon, description, evolution);
+    .innerHTML = getPokemonDialogTemplate(pokemon, description, evolutionPokemon);
 }
 
 function getGermanFlavorText(species) {
