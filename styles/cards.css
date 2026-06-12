@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 220px;
     background: #18183a;
-    border: 1px solid rgba(0, 255, 81, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 24px;
     padding: 1rem 0.75rem 0.85rem;
     display: flex;
@@ -84,74 +84,146 @@
     color: white;
 }
 
-.pokemon_card.border-grass {
-    border-color: #7ac74c;
+.pokemon_card_border_grass {
+    background: linear-gradient(
+        180deg,
+        rgba(120, 200, 80, .35) 0%,
+        rgba(120, 200, 80, .05) 100%
+    );
 }
 
-.pokemon_card.border-fire {
-    border-color: #ee8130;
+.pokemon_card_border_fire {
+    background: linear-gradient(
+        180deg,
+        rgba(240, 128, 48, .35) 0%,
+        rgba(240, 128, 48, .05) 100%
+    );
 }
 
-.pokemon_card.border-water {
-    border-color: #6390f0;
+.pokemon_card_border_water {
+    background: linear-gradient(
+        180deg,
+        rgba(104, 144, 240, .35) 0%,
+        rgba(104, 144, 240, .05) 100%
+    );
 }
 
-.pokemon_card.border-electric {
-    border-color: #f7d02c;
+.pokemon_card_border_electric {
+    background: linear-gradient(
+        180deg,
+        rgba(248, 208, 48, .35) 0%,
+        rgba(248, 208, 48, .05) 100%
+    );
 }
 
-.pokemon_card.border-ice {
-    border-color: #96d9d6;
+.pokemon_card_border_poison {
+    background: linear-gradient(
+        180deg,
+        rgba(160, 64, 160, .35) 0%,
+        rgba(160, 64, 160, .05) 100%
+    );
 }
 
-.pokemon_card.border-fighting {
-    border-color: #c22e28;
+.pokemon_card_border_bug {
+    background: linear-gradient(
+        180deg,
+        rgba(168, 184, 32, .35) 0%,
+        rgba(168, 184, 32, .05) 100%
+    );
 }
 
-.pokemon_card.border-poison {
-    border-color: #a33ea1;
+.pokemon_card_border_normal {
+    background: linear-gradient(
+        180deg,
+        rgba(168, 168, 120, .35) 0%,
+        rgba(168, 168, 120, .05) 100%
+    );
 }
 
-.pokemon_card.border-ground {
-    border-color: #e2bf65;
+.pokemon_card_border_ground {
+    background: linear-gradient(
+        180deg,
+        rgba(224, 192, 104, .35) 0%,
+        rgba(224, 192, 104, .05) 100%
+    );
 }
 
-.pokemon_card.border-flying {
-    border-color: #a98ff3;
+.pokemon_card_border_flying {
+    background: linear-gradient(
+        180deg,
+        rgba(168, 144, 240, .35) 0%,
+        rgba(168, 144, 240, .05) 100%
+    );
 }
 
-.pokemon_card.border-psychic {
-    border-color: #f95587;
+.pokemon_card_border_fairy {
+    background: linear-gradient(
+        180deg,
+        rgba(238, 153, 172, .35) 0%,
+        rgba(238, 153, 172, .05) 100%
+    );
 }
 
-.pokemon_card.border-bug {
-    border-color: #a6b91a;
+.pokemon_card_border_fighting {
+    background: linear-gradient(
+        180deg,
+        rgba(192, 48, 40, .35) 0%,
+        rgba(192, 48, 40, .05) 100%
+    );
 }
 
-.pokemon_card.border-rock {
-    border-color: #b6a136;
+.pokemon_card_border_psychic {
+    background: linear-gradient(
+        180deg,
+        rgba(248, 88, 136, .35) 0%,
+        rgba(248, 88, 136, .05) 100%
+    );
 }
 
-.pokemon_card.border-ghost {
-    border-color: #735797;
+.pokemon_card_border_rock {
+    background: linear-gradient(
+        180deg,
+        rgba(184, 160, 56, .35) 0%,
+        rgba(184, 160, 56, .05) 100%
+    );
 }
 
-.pokemon_card.border-dragon {
-    border-color: #6f35fc;
+.pokemon_card_border_ghost {
+    background: linear-gradient(
+        180deg,
+        rgba(112, 88, 152, .35) 0%,
+        rgba(112, 88, 152, .05) 100%
+    );
 }
 
-.pokemon_card.border-dark {
-    border-color: #705746;
+.pokemon_card_border_dragon {
+    background: linear-gradient(
+        180deg,
+        rgba(112, 56, 248, .35) 0%,
+        rgba(112, 56, 248, .05) 100%
+    );
 }
 
-.pokemon_card.border-steel {
-    border-color: #b7b7ce;
+.pokemon_card_border_dark {
+    background: linear-gradient(
+        180deg,
+        rgba(112, 88, 72, .35) 0%,
+        rgba(112, 88, 72, .05) 100%
+    );
 }
 
-.pokemon_card.border-fairy {
-    border-color: #d685ad;
+.pokemon_card_border_steel {
+    background: linear-gradient(
+        180deg,
+        rgba(184, 184, 208, .35) 0%,
+        rgba(184, 184, 208, .05) 100%
+    );
 }
 
-.pokemon_card.border-normal {
-    border-color: #a8a77a;
+.pokemon_card_border_ice {
+    background: linear-gradient(
+        180deg,
+        rgba(152, 216, 216, .35) 0%,
+        rgba(152, 216, 216, .05) 100%
+    );
 }
