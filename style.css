@@ -90,15 +90,6 @@ header {
     height: 200px;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .load_more_container {
     display: flex;
     justify-content: center;
@@ -107,7 +98,7 @@ header {
 
 .load_more_btn {
     border: none;
-    border-radius: 999px;
+    border-radius: 30px;
     padding: 0.9rem 1.8rem;
     background-color: #18183a;
     color: white;
