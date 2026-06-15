@@ -44,3 +44,31 @@ function showPokemonInDialog(id) {
     openPokemonDialog(id);
 }
 
+function showPreviousPokemon(id) {
+    const current_index = current_visible_pokemon.findIndex(
+            (pokemon) => pokemon.id === id
+        );
+    if (current_index > 0) {
+        showPokemonInDialog(
+            current_visible_pokemon[
+                current_index - 1
+            ].id
+        );
+    }
+}
+
+function showNextPokemon(id) {
+    const current_index = current_visible_pokemon.findIndex(
+            (pokemon) => pokemon.id === id
+        );
+    if (
+        current_index <
+        current_visible_pokemon.length - 1
+    ) {
+        showPokemonInDialog(
+            current_visible_pokemon[
+                current_index + 1
+            ].id
+        );
+    }
+}

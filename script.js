@@ -2,6 +2,7 @@ const all_pokemon = [];
 
 let current_pokemon = 40;
 let active_type_filter = "";
+let current_visible_pokemon = [];
 
 function capitalizeFirstLetter(text) {
     return text.charAt(0).toUpperCase()
@@ -23,34 +24,39 @@ function hideLoadingScreen() {
 }
 
 function initEventListeners() {
-    document
-        .querySelector(".load_more_btn")
-        .addEventListener(
-            "click",
-            loadMorePokemon
-        );
+    document.querySelector(".load_more_btn")
+        .addEventListener("click", loadMorePokemon);
     addFilterListeners();
-    document
-        .querySelector(
-            '[data-id="search_input"]'
-        )
-        .addEventListener(
-            "input",
-            searchPokemon
-        );
+    document.querySelector('[data-id="search_input"]')
+        .addEventListener("input", searchPokemon);
     initDialogListener();
 }
 
 // #region searchPokemon
 function searchPokemon() {
     const search_input = getSearchInput();
+    const load_more_button = document.querySelector('[data-id="load-more-button"]');
+    if (search_input === "") {
+    document.getElementById("search_hint").style.display = "none";
+    current_visible_pokemon = all_pokemon.slice(0, current_pokemon);
+    load_more_button.style.display = "block";
+    renderFilteredPokemon(
+        all_pokemon.slice(0, current_pokemon)
+    );
+    updatePokemonCounter();
+    return;
+}
     if (!isValidSearch(search_input)) {
         return;
     }
     const filtered_pokemon = filterPokemon(search_input);
-    renderFilteredPokemon(
-        filtered_pokemon
-    );
+    load_more_button.style.display = "none";
+    renderFilteredPokemon(filtered_pokemon);
+}
+
+function toggleLoadMoreButton(show) {
+    document.querySelector('[data-id="load-more-button"]')
+    .style.display = show ? "block" : "none";
 }
 
 function getSearchInput() {
@@ -63,13 +69,17 @@ function getSearchInput() {
 }
 
 function isValidSearch(search_input) {
+    const search_hint = document.getElementById("search_hint");
     if (
         search_input.length > 0 &&
         search_input.length < 3
     ) {
+        search_hint.style.display = "block";
         clearPokemonContainer();
         return false;
     }
+
+    search_hint.style.display = "none";
     return true;
 }
 // #endregion
@@ -144,4 +154,82 @@ function getEvolutionPokemon(evolution) {
 
 function getPokemonStats(pokemon) {
     return pokemon.stats;
+}
+
+function delay(milliseconds) {
+    return new Promise(
+        (resolve) => setTimeout(resolve, milliseconds)
+    );
+}
+
+function getPokemonAbilities(pokemon) {
+    return pokemon.abilities
+        .map(
+            (ability) =>
+                capitalizeFirstLetter(
+                    ability.ability.name
+                )
+        )
+        .join(", ");
+}
+
+function getPokemonTypesHtml(pokemon) {
+    return pokemon.types
+        .map(
+            (type) => `
+                <span
+                    class="type_badge ${type.type.name}"
+                >
+                    ${type.type.name.toUpperCase()}
+                </span>
+            `,
+        )
+        .join("");
+}
+
+function getPokemonStatsHtml(pokemon) {
+    const stat_names = ["HP", "Angriff", "Verteidigung", "Sp. Angriff", "Sp. Verteidigung", "Initiative"];
+    return pokemon.stats
+        .map(
+            (stat, index) => `
+                <div class="stat_row">
+                    <span class="stat_name">
+                        ${stat_names[index]}
+                    </span>
+                    <span class="stat_value">
+                        ${stat.base_stat}
+                    </span>
+                    <div class="stat_bar">
+                        <div
+                            class="stat_fill"
+                            style="
+                                width:${stat.base_stat}%;
+                            "
+                        ></div>
+                    </div>
+                </div>
+            `,
+        )
+        .join("");
+}
+
+function getEvolutionHtml(evolutionPokemon) {
+    return evolutionPokemon.map((pokemon, index) => `
+            <div
+                class="evolution_pokemon"
+                onclick="openPokemonDialog(${pokemon.id})">
+                <div class="evolution_sprite">
+                    <img src="${pokemon.sprites.other['official-artwork'].front_default}">
+                </div>
+                <span>
+                    ${capitalizeFirstLetter(pokemon.name)}
+                </span>
+            </div>
+            ${
+                index < evolutionPokemon.length - 1
+                    ? "<span>→</span>"
+                    : ""
+            }
+        `)
+        .join("");
 }

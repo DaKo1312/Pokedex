@@ -14,7 +14,7 @@ function getPokemonCardTemplate(pokemon) {
                 ${pokemon.name}
             </h2>
             <div class="pokemon_types">
-                ${getPokemonTypesTemplate(pokemon)}
+                ${getPokemonTypesHtml(pokemon)}
             </div>
         </button>
     `;
@@ -22,10 +22,10 @@ function getPokemonCardTemplate(pokemon) {
 
 function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
     return `
-        <button class="dialog_control_btn dialog_nav_prev" data-id="prev_button" onclick="showPokemonInDialog(${pokemon.id - 1})">
+        <button class="dialog_control_btn dialog_nav_prev" data-id="prev_button" onclick="showPreviousPokemon(${pokemon.id})">
             ←
         </button>
-        <button class="dialog_control_btn dialog_nav_next" data-id="next_button" onclick="showPokemonInDialog(${pokemon.id + 1})">
+        <button class="dialog_control_btn dialog_nav_next" data-id="next_button" onclick="showNextPokemon(${pokemon.id})">
             →
         </button>
         <button class="dialog_control_btn dialog_close_btn" data-id="close_dialog_button" onclick="document.getElementById('pokemon_dialog').close()">
@@ -40,7 +40,7 @@ function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
                 alt="${pokemon.name}">
             <h2>${capitalizeFirstLetter(pokemon.name)}</h2>
             <div class="pokemon_types">
-                ${getPokemonTypesTemplate(pokemon)}
+                ${getPokemonTypesHtml(pokemon)}
             </div>
         </div>
         <div class="dialog_content">
@@ -64,11 +64,7 @@ function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
                 <div class="info_card">
                     <span>Fähigkeiten</span>
                     <strong>
-                        ${pokemon.abilities
-                            .map((ability) =>
-                                capitalizeFirstLetter(ability.ability.name),
-                            )
-                            .join(", ")}
+                        ${getPokemonAbilities(pokemon)}
                     </strong>
                 </div>
             </div>
@@ -76,77 +72,16 @@ function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
                 Kampfwerte
             </h3>
             <div class="pokemon_stats">
-                ${getPokemonStatsTemplate(pokemon)}
+                ${getPokemonStatsHtml(pokemon)}
             </div>
             <h3 class="dialog_section_title">
                 Entwicklung
             </h3>
             <div class="evolution_chain">
-                ${getEvolutionTemplate(evolutionPokemon)}
+                ${getEvolutionHtml(evolutionPokemon)}
             </div>
         </div>
     `;
-}
-
-function getPokemonTypesTemplate(pokemon) {
-    return pokemon.types
-        .map(
-            (type) => `
-                <span
-                    class="type_badge ${type.type.name}"
-                >
-                    ${type.type.name.toUpperCase()}
-                </span>
-            `,
-        )
-        .join("");
-}
-
-function getPokemonStatsTemplate(pokemon) {
-    const stat_names = ["HP", "Angriff", "Verteidigung", "Sp. Angriff", "Sp. Verteidigung", "Initiative"];
-    return pokemon.stats
-        .map(
-            (stat, index) => `
-                <div class="stat_row">
-                    <span class="stat_name">
-                        ${stat_names[index]}
-                    </span>
-                    <span class="stat_value">
-                        ${stat.base_stat}
-                    </span>
-                    <div class="stat_bar">
-                        <div
-                            class="stat_fill"
-                            style="
-                                width:${stat.base_stat}%;
-                            "
-                        ></div>
-                    </div>
-                </div>
-            `,
-        )
-        .join("");
-}
-
-function getEvolutionTemplate(evolutionPokemon) {
-    return evolutionPokemon.map((pokemon, index) => `
-            <div
-                class="evolution_pokemon"
-                onclick="openPokemonDialog(${pokemon.id})">
-                <div class="evolution_sprite">
-                    <img src="${pokemon.sprites.other['official-artwork'].front_default}">
-                </div>
-                <span>
-                    ${capitalizeFirstLetter(pokemon.name)}
-                </span>
-            </div>
-            ${
-                index < evolutionPokemon.length - 1
-                    ? "<span>→</span>"
-                    : ""
-            }
-        `)
-        .join("");
 }
 
 function getNoPokemonFoundTemplate() {

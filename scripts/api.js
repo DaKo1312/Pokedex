@@ -16,24 +16,34 @@ async function loadFirstPokemon() {
     for (let i = 1; i <= 40; i++) {
         await loadPokemon(i);
     }
+    current_visible_pokemon = all_pokemon.slice(0, 40);
     updatePokemonCounter();
     hideLoadingScreen();
 }
 
 async function loadMorePokemon() {
+    const load_more_button =
+    document.querySelector(".load_more_btn");
+    load_more_button.disabled = true;
+    load_more_button.textContent = "LOADING...";
+    await delay(2000);
+
     let start = current_pokemon + 1;
     let end = current_pokemon + 20;
     if (end > 151) {
         end = 151;}
     for (let i = start; i <= end; i++) {
-        await loadPokemon(i);}
+    renderPokemon(all_pokemon[i - 1]);
+}
     current_pokemon = end;
+    current_visible_pokemon = all_pokemon.slice(0, current_pokemon);
     updatePokemonCounter();
-    if (current_pokemon >= 151) {
-        document.querySelector(
-            ".load_more_btn"
-        ).style.display = "none";
-    }
+        load_more_button.disabled = false;
+        load_more_button.textContent = "LOAD MORE";
+    if (current_pokemon < 151) {
+        load_more_button.disabled = false;
+        load_more_button.textContent = "LOAD MORE";
+}
 }
 
 async function loadAllPokemon() {
