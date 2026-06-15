@@ -32,7 +32,6 @@ function initEventListeners() {
     initDialogListener();
 }
 
-// #region searchPokemon
 function searchPokemon() {
     const search_input = getSearchInput();
     const load_more_button = document.querySelector('[data-id="load-more-button"]');
@@ -82,7 +81,6 @@ function isValidSearch(search_input) {
     search_hint.style.display = "none";
     return true;
 }
-// #endregion
 
 function clearPokemonContainer() {
     document.getElementById(
@@ -129,25 +127,19 @@ function getPokemonListForSearch() {
 
 function getEvolutionPokemon(evolution) {
     const evolutionPokemon = [];
-    const firstPokemon = all_pokemon.find(
-    pokemon => pokemon.name === evolution.chain.species.name);
-    if (firstPokemon) {
-        evolutionPokemon.push(firstPokemon);
-    }
-    const secondPokemon = all_pokemon.find(
-        pokemon => pokemon.name === evolution.chain.evolves_to[0]?.species?.name
-    );
-    if (secondPokemon) {
-        evolutionPokemon.push(secondPokemon);
-    }
-    const thirdPokemon = all_pokemon.find(
-        pokemon => pokemon.name === evolution.chain.evolves_to[0]
-                ?.evolves_to[0]
-                ?.species?.name
-    );
-    if (thirdPokemon) {
-        evolutionPokemon.push(thirdPokemon);
-    }
+    const pokemonNames = [
+        evolution.chain.species.name,
+        evolution.chain.evolves_to[0]?.species?.name,
+        evolution.chain.evolves_to[0]?.evolves_to[0]?.species?.name,
+    ];
+    pokemonNames.forEach((name) => {
+        const pokemon = all_pokemon.find(
+            (pokemon) => pokemon.name === name
+        );
+        if (pokemon) {
+            evolutionPokemon.push(pokemon);
+        }
+    });
 
     return evolutionPokemon;
 }
@@ -173,16 +165,19 @@ function getPokemonAbilities(pokemon) {
         .join(", ");
 }
 
+function getPokemonTypes(pokemon) {
+    return pokemon.types.map((type) => ({
+        name: type.type.name,
+        label: type.type.name.toUpperCase(),
+    }));
+}
+
 function getPokemonTypesHtml(pokemon) {
-    return pokemon.types
-        .map(
-            (type) => `
-                <span
-                    class="type_badge ${type.type.name}"
-                >
-                    ${type.type.name.toUpperCase()}
-                </span>
-            `,
+    const types = getPokemonTypes(pokemon);
+
+    return types
+        .map((type) =>
+            getPokemonTypeTemplate(type),
         )
         .join("");
 }
@@ -202,23 +197,34 @@ function getPokemonStatsHtml(pokemon) {
         .join("");
 }
 
+function getEvolutionData(evolutionPokemon) {
+    return evolutionPokemon.map(
+        (pokemon, index) => ({
+            id: pokemon.id,
+            image:
+                pokemon.sprites.other[
+                    "official-artwork"
+                ].front_default,
+            name: capitalizeFirstLetter(
+                pokemon.name
+            ),
+            show_arrow:
+                index <
+                evolutionPokemon.length - 1,
+        }),
+    );
+}
+
 function getEvolutionHtml(evolutionPokemon) {
-    return evolutionPokemon.map((pokemon, index) => `
-            <div
-                class="evolution_pokemon"
-                onclick="openPokemonDialog(${pokemon.id})">
-                <div class="evolution_sprite">
-                    <img src="${pokemon.sprites.other['official-artwork'].front_default}">
-                </div>
-                <span>
-                    ${capitalizeFirstLetter(pokemon.name)}
-                </span>
-            </div>
-            ${
-                index < evolutionPokemon.length - 1
-                    ? "<span>→</span>"
-                    : ""
+    const evolution_data = getEvolutionData(evolutionPokemon);
+
+    return evolution_data
+        .map((pokemon) => {
+            let html = getEvolutionPokemonTemplate(pokemon);
+            if (pokemon.show_arrow) {
+                html += getEvolutionArrowTemplate();
             }
-        `)
+            return html;
+        })
         .join("");
 }

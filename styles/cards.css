@@ -14,7 +14,7 @@
         box-shadow .2s ease;
 }
 
-@media (min-width: 375px) {
+@media (max-width: 375px) {
     .pokemon_card {
         max-width: 170px;
         padding: 0.75rem 0.5rem;

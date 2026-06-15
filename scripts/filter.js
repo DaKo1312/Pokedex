@@ -16,15 +16,19 @@ function renderFilteredPokemon(filtered_pokemon) {
 
 function filterPokemonByType(type) {
     active_type_filter = type;
+    const load_more_button = document.querySelector(".load_more_btn");
     if (type === "all") {
-        renderCurrentPokemon();
-        updatePokemonCounter();
-        return;
-    }
+    load_more_button.style.display ="block";
+    renderCurrentPokemon();
+    updatePokemonCounter();
+    return;
+}
     const filtered_pokemon = getFilteredPokemonByType(type);
-    renderFilteredPokemon(
-        filtered_pokemon
-    );
+    load_more_button.style.display = "none";
+
+renderFilteredPokemon(
+    filtered_pokemon
+);
 }
 
 function getFilteredPokemonByType(type) {
@@ -41,9 +45,7 @@ function getFilteredPokemonByType(type) {
 }
 
 function addFilterListeners() {
-    const filter_buttons = document.querySelectorAll(
-            ".filter_btn"
-        );
+    const filter_buttons = document.querySelectorAll(".filter_btn");
     filter_buttons.forEach(
         (button) => {
             button.addEventListener(

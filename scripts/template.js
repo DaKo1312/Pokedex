@@ -117,3 +117,34 @@ function getPokemonStatTemplate(stat) {
         </div>
     `;
 }
+
+function getPokemonTypeTemplate(type) {
+    return `
+        <span
+            class="type_badge ${type.name}"
+        >
+            ${type.label}
+        </span>
+    `;
+}
+
+function getEvolutionPokemonTemplate(pokemon) {
+    return `
+        <div
+            class="evolution_pokemon"
+            onclick="openPokemonDialog(${pokemon.id})">
+            <div class="evolution_sprite">
+                <img src="${pokemon.image}">
+            </div>
+            <span>
+                ${pokemon.name}
+            </span>
+        </div>
+    `;
+}
+
+function getEvolutionArrowTemplate() {
+    return `
+        <span>→</span>
+    `;
+}
