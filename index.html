@@ -24,11 +24,17 @@
                     <h1>Pokedex</h1>
                 </div>
                 <section class="search_section">
-                    <input
-                    data-id="search_input"
-                    type="text"
-                    placeholder="Search Pokemon ..."
-                    />
+                    <div class="search_container">
+                        <button
+                            class="search_btn"
+                            onclick="searchPokemon()"> Search
+                        </button>
+                        <input
+                            data-id="search_input"
+                            type="text"
+                            placeholder="Search Pokemon ..."
+                        />
+                    </div>
                 </section>
                 <p id="search_hint">
                     Enter 3 or more letters to start searching.

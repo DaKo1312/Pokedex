@@ -28,7 +28,15 @@ function initEventListeners() {
         .addEventListener("click", loadMorePokemon);
     addFilterListeners();
     document.querySelector('[data-id="search_input"]')
-        .addEventListener("input", searchPokemon);
+    .addEventListener(
+        "keydown",
+        (event) => {
+            if (event.key === "Enter") {
+                searchPokemon();
+            }
+        }
+    );
+        
     initDialogListener();
 }
 
