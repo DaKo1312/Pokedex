@@ -36,8 +36,25 @@ function initEventListeners() {
             }
         }
     );
+    document.querySelector('[data-id="search_input"]')
+        .addEventListener("input",validateSearchInput);
         
     initDialogListener();
+}
+
+function validateSearchInput() {
+    const search_input = getSearchInput();
+    if (
+        search_input.length > 0 &&
+        search_input.length < 3
+    ) {
+        document.getElementById(
+            "search_hint"
+        ).style.display = "block";
+        return;
+    }
+    document.getElementById("search_hint")
+    .style.display = "none";
 }
 
 function searchPokemon() {
