@@ -1,10 +1,11 @@
 function renderFilteredPokemon(filtered_pokemon) {
     clearPokemonContainer();
     if (filtered_pokemon.length === 0) {
-        document.getElementById("pokemon_container").innerHTML =
-            getNoPokemonFoundTemplate();
+        document.getElementById("pokemon_container").innerHTML = getNoPokemonFoundTemplate();
         updateResultCounter(0);
+        document.querySelector('[data-id="load-more-button"]').disabled = true;
         return;
+        document.querySelector('[data-id="load-more-button"]').disabled = false;
     }
     filtered_pokemon.forEach((pokemon) => {
         renderPokemon(pokemon);

@@ -44,7 +44,6 @@ function initEventListeners() {
 // #region searchPokemon
 function searchPokemon() {
     const search_input = getSearchInput();
-    console.log(active_type_filter);
     if (!isValidSearch(search_input)) {
         return;
     }
@@ -139,7 +138,6 @@ function getEvolutionPokemon(evolution) {
     if (thirdPokemon) {
         evolutionPokemon.push(thirdPokemon);
     }
-    console.log(evolutionPokemon);
 
     return evolutionPokemon;
 }
