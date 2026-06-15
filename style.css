@@ -9,6 +9,10 @@ body {
     background-color: #0f0f1a;
 }
 
+main {
+    min-height: 100dvh;
+}
+
 .container {
     width: 100%;
     max-width: 1920px;
@@ -22,6 +26,7 @@ header {
         #16193d 0%,
         #123f73 100%
     );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo_container {
@@ -171,4 +176,10 @@ footer {
     color: rgba(255,255,255,0.7);
     font-size: 18px;
     margin-top: 12px;
+}
+
+@media (max-width: 375px) {
+    #pokemon_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

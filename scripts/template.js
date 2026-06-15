@@ -2,7 +2,7 @@ function getPokemonCardTemplate(pokemon) {
     return `
         <button class="pokemon_card pokemon_card_border_${pokemon.types[0].type.name}" data-id="card" onclick="openPokemonDialog(${pokemon.id})">
             <span class="pokemon_id">
-                – ${pokemon.id} −
+                – ${pokemon.id} –
             </span>
             <img
                 class="pokemon_image"
