@@ -187,29 +187,18 @@ function getPokemonTypesHtml(pokemon) {
         .join("");
 }
 
+function getPokemonStats(pokemon) {
+    const stat_names = ["HP","Angriff","Verteidigung","Sp. Angriff","Sp. Verteidigung","Initiative",];
+    return pokemon.stats.map((stat, index) => ({
+        name: stat_names[index],
+        value: stat.base_stat,
+    }));
+}
+
 function getPokemonStatsHtml(pokemon) {
-    const stat_names = ["HP", "Angriff", "Verteidigung", "Sp. Angriff", "Sp. Verteidigung", "Initiative"];
-    return pokemon.stats
-        .map(
-            (stat, index) => `
-                <div class="stat_row">
-                    <span class="stat_name">
-                        ${stat_names[index]}
-                    </span>
-                    <span class="stat_value">
-                        ${stat.base_stat}
-                    </span>
-                    <div class="stat_bar">
-                        <div
-                            class="stat_fill"
-                            style="
-                                width:${stat.base_stat}%;
-                            "
-                        ></div>
-                    </div>
-                </div>
-            `,
-        )
+    const stats = getPokemonStats(pokemon);
+    return stats
+        .map((stat) => getPokemonStatTemplate(stat))
         .join("");
 }
 

@@ -96,3 +96,24 @@ function getNoPokemonFoundTemplate() {
         </div>
     `;
 }
+
+function getPokemonStatTemplate(stat) {
+    return `
+        <div class="stat_row">
+            <span class="stat_name">
+                ${stat.name}
+            </span>
+            <span class="stat_value">
+                ${stat.value}
+            </span>
+            <div class="stat_bar">
+                <div
+                    class="stat_fill"
+                    style="
+                        width:${stat.value}%;
+                    "
+                ></div>
+            </div>
+        </div>
+    `;
+}
