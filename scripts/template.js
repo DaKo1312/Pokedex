@@ -150,7 +150,7 @@ function getPokemonStatTemplate(stat) {
                 <div
                     class="stat_fill"
                     style="
-                        width:${stat.value}%;
+                        width:${(stat.value / 160) * 100}%;
                     "
                 ></div>
             </div>
