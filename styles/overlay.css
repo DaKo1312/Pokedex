@@ -1,4 +1,5 @@
 #pokemon_dialog {
+    position: fixed;
     width: 520px;
     max-width: 90vw;
     max-height: 90vh;
