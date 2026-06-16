@@ -203,7 +203,6 @@ function getPokemonTypes(pokemon) {
 
 function getPokemonTypesHtml(pokemon) {
     const types = getPokemonTypes(pokemon);
-
     return types
         .map((type) =>
             getPokemonTypeTemplate(type),
@@ -246,7 +245,6 @@ function getEvolutionData(evolutionPokemon) {
 
 function getEvolutionHtml(evolutionPokemon) {
     const evolution_data = getEvolutionData(evolutionPokemon);
-
     return evolution_data
         .map((pokemon) => {
             let html = getEvolutionPokemonTemplate(pokemon);
@@ -260,7 +258,6 @@ function getEvolutionHtml(evolutionPokemon) {
 
 function setDialogTab(tab) {
     active_dialog_tab = tab;
-
     renderPokemonDialog(
         current_dialog_pokemon,
         current_dialog_description,
