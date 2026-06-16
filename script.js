@@ -3,6 +3,10 @@ const all_pokemon = [];
 let current_pokemon = 40;
 let active_type_filter = "";
 let current_visible_pokemon = [];
+let active_dialog_tab = "infos";
+let current_dialog_pokemon = null;
+let current_dialog_description = "";
+let current_dialog_evolution = [];
 
 function capitalizeFirstLetter(text) {
     return text.charAt(0).toUpperCase()
@@ -252,4 +256,14 @@ function getEvolutionHtml(evolutionPokemon) {
             return html;
         })
         .join("");
+}
+
+function setDialogTab(tab) {
+    active_dialog_tab = tab;
+
+    renderPokemonDialog(
+        current_dialog_pokemon,
+        current_dialog_description,
+        current_dialog_evolution
+    );
 }

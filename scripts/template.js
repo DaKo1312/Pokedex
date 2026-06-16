@@ -45,40 +45,80 @@ function getPokemonDialogTemplate(pokemon, description, evolutionPokemon) {
         </div>
         <div class="dialog_content">
             <p class="pokemon_description">${description}</p>
-            <h3 class="dialog_section_title">
-                Infos
-            </h3>
-            <div class="pokemon_infos">
-                <div class="info_card">
-                    <span>Höhe</span>
-                    <strong>${pokemon.height / 10} m</strong>
-                </div>
-                <div class="info_card">
-                    <span>Gewicht</span>
-                    <strong>${pokemon.weight / 10} kg</strong>
-                </div>
-                <div class="info_card">
-                    <span>Basis XP</span>
-                    <strong>${pokemon.base_experience}</strong>
-                </div>
-                <div class="info_card">
-                    <span>Fähigkeiten</span>
-                    <strong>
-                        ${getPokemonAbilities(pokemon)}
-                    </strong>
-                </div>
+            <div class="dialog_tabs">
+                <button
+                    class="dialog_tab_btn ${
+                        active_dialog_tab === "infos"
+                            ? "active_tab"
+                            : ""
+                    }"
+                    onclick="setDialogTab('infos')"
+                >
+                    Infos
+                </button>
+                <button
+                    class="dialog_tab_btn ${
+                        active_dialog_tab === "stats"
+                            ? "active_tab"
+                            : ""
+                    }"
+                    onclick="setDialogTab('stats')"
+                >
+                    Kampfwerte
+                </button>
+                <button
+                    class="dialog_tab_btn ${
+                        active_dialog_tab === "evolution"
+                            ? "active_tab"
+                            : ""
+                    }"
+                    onclick="setDialogTab('evolution')"
+                >
+                    Entwicklung
+                </button>
             </div>
-            <h3 class="dialog_section_title">
-                Kampfwerte
-            </h3>
-            <div class="pokemon_stats">
-                ${getPokemonStatsHtml(pokemon)}
-            </div>
-            <h3 class="dialog_section_title">
-                Entwicklung
-            </h3>
-            <div class="evolution_chain">
-                ${getEvolutionHtml(evolutionPokemon)}
+            <div class="dialog_tab_content">
+                ${active_dialog_tab === "infos" ? `
+                <h3 class="dialog_section_title">
+                    Infos
+                </h3>
+                <div class="pokemon_infos">
+                    <div class="info_card">
+                        <span>Höhe</span>
+                        <strong>${pokemon.height / 10} m</strong>
+                    </div>
+                    <div class="info_card">
+                        <span>Gewicht</span>
+                        <strong>${pokemon.weight / 10} kg</strong>
+                    </div>
+                    <div class="info_card">
+                        <span>Basis XP</span>
+                        <strong>${pokemon.base_experience}</strong>
+                    </div>
+                    <div class="info_card">
+                        <span>Fähigkeiten</span>
+                        <strong>
+                            ${getPokemonAbilities(pokemon)}
+                        </strong>
+                    </div>
+                </div>
+                ` : ""}
+                ${active_dialog_tab === "stats" ? `
+                <h3 class="dialog_section_title">
+                    Kampfwerte
+                </h3>
+                <div class="pokemon_stats">
+                    ${getPokemonStatsHtml(pokemon)}
+                </div>
+                ` : ""}
+                ${active_dialog_tab === "evolution" ? `
+                <h3 class="dialog_section_title">
+                    Entwicklung
+                </h3>
+                <div class="evolution_chain">
+                    ${getEvolutionHtml(evolutionPokemon)}
+                </div>
+                ` : ""}
             </div>
         </div>
     `;

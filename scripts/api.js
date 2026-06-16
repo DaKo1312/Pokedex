@@ -64,15 +64,16 @@ async function savePokemon(id) {
 }
 
 async function openPokemonDialog(id) {
+    active_dialog_tab = "infos";
     document.body.style.overflow = "hidden";
-    const pokemon = all_pokemon.find(
-            (pokemon) =>
-                pokemon.id === id
-        );
+    const pokemon = all_pokemon.find((pokemon) => pokemon.id === id);
     const species = await loadPokemonSpecies(id);
     const evolution = await loadEvolutionChain(species.evolution_chain.url);
     const evolutionPokemon = getEvolutionPokemon(evolution);
     const description = getGermanFlavorText(species);
+    current_dialog_pokemon = pokemon;
+    current_dialog_description = description;
+    current_dialog_evolution = evolutionPokemon;
     renderPokemonDialog(pokemon, description, evolutionPokemon);
     document.getElementById("pokemon_dialog")
         .showModal();
