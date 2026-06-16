@@ -222,3 +222,19 @@ footer {
     color: rgba(255,255,255,0.6);
     font-size: 18px;
 }
+
+#load_more_loader {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    pointer-events: none;
+}
+
+#load_more_loader img {
+    width: 350px;
+    height: 350px;
+    animation: spin 1s linear infinite;
+}

@@ -22,28 +22,22 @@ async function loadFirstPokemon() {
 }
 
 async function loadMorePokemon() {
-    const load_more_button =
-    document.querySelector(".load_more_btn");
-    load_more_button.disabled = true;
-    load_more_button.textContent = "LOADING...";
+    const button = document.querySelector(".load_more_btn");
+    const loader = document.getElementById("load_more_loader");
+    button.disabled = true;
+    button.textContent = "LOADING...";
+    loader.style.display = "block";
     await delay(2000);
-
-    let start = current_pokemon + 1;
-    let end = current_pokemon + 20;
-    if (end > 151) {
-        end = 151;}
-    for (let i = start; i <= end; i++) {
-    renderPokemon(all_pokemon[i - 1]);
-}
+    const start = current_pokemon + 1;
+    const end = Math.min(current_pokemon + 20, 151);
+    for (let i = start; i <= end; i++) renderPokemon(all_pokemon[i - 1]);
     current_pokemon = end;
-    current_visible_pokemon = all_pokemon.slice(0, current_pokemon);
+    current_visible_pokemon = all_pokemon.slice(0, end);
     updatePokemonCounter();
-        load_more_button.disabled = false;
-        load_more_button.textContent = "LOAD MORE";
-    if (current_pokemon < 151) {
-        load_more_button.disabled = false;
-        load_more_button.textContent = "LOAD MORE";
-}
+    loader.style.display = "none";
+    current_pokemon < 151
+        ? (button.disabled = false, button.textContent = "LOAD MORE")
+        : (button.style.display = "none");
 }
 
 async function loadAllPokemon() {
